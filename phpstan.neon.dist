@@ -1,0 +1,7 @@
+parameters:
+    level: max
+    paths:
+        - src
+        - tests
+    additionalConstructors:
+        - Timbrix\Models\Model::hydrate

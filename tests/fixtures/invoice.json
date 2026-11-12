@@ -1,0 +1,21 @@
+{
+  "id": "3f6c1b0e-1111-4a2b-9c3d-000000000001",
+  "uuid": "d3bfbc57-44af-4390-a064-f0afab85e5df",
+  "channel": "api",
+  "environment": "sandbox",
+  "status": "vigente",
+  "cancellationStatus": null,
+  "cancellationDesynced": false,
+  "type": "I",
+  "series": "A",
+  "folioNumber": "1",
+  "total": 116,
+  "date": "2026-01-15T10:00:00",
+  "xml": "<cfdi:Comprobante/>",
+  "rfcReceptor": "XAXX010101000",
+  "relatedCfdis": [],
+  "substitutedBy": [],
+  "createdAt": "2026-01-15T10:00:01.000Z",
+  "paymentMethod": "PUE",
+  "balance": null
+}
