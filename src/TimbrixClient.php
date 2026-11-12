@@ -22,7 +22,7 @@ use Timbrix\Resources\Sat;
  */
 final class TimbrixClient
 {
-    public const VERSION = '0.1.1';
+    public const VERSION = '0.1.2';
     public const DEFAULT_BASE_URL = 'https://api.timbrix.mx';
     public const DEFAULT_TIMEOUT = 30.0;
     public const DEFAULT_MAX_RETRIES = 2;

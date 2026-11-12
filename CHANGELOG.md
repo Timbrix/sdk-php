@@ -1,5 +1,11 @@
 # @timbrix/sdk-php
 
+## 0.1.2
+
+### Patch Changes
+
+- 4621664: Las API keys nuevas empiezan con `sk_test_` (sandbox) o `sk_live_` (producción), y el panel muestra el prefijo en la lista. Las keys anteriores (`sk_...`) siguen funcionando. Una key cuyo prefijo no coincide con su ambiente responde `401`. Los docs, los README de los SDK y el MCP usan los prefijos reales en sus ejemplos.
+
 ## 0.1.1
 
 ### Patch Changes

@@ -28,7 +28,7 @@ $invoice = $timbrix->invoices->create([
 file_put_contents('factura.pdf', $timbrix->invoices->getPdf($invoice->uuid));
 ```
 
-Con una API key de sandbox el CFDI no tiene validez fiscal; con una de producción, sí. El entorno de cada key se ve en el panel, en la lista de API keys. No expongas la key en código que corre en el navegador.
+Con una API key de sandbox (`sk_test_...`) el CFDI no tiene validez fiscal; con una de producción (`sk_live_...`), sí. Las keys creadas antes de este formato empiezan solo con `sk_`; su entorno se ve en el panel, en la lista de API keys. No expongas la key en código que corre en el navegador.
 
 Pasa siempre una `idempotencyKey` estable (por ejemplo, el id de tu pedido) al timbrar: es lo que permite al SDK reintentar sin riesgo de duplicar un CFDI.
 
