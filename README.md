@@ -1,5 +1,10 @@
 # Timbrix PHP SDK
 
+[![Packagist](https://img.shields.io/packagist/v/timbrix/sdk-php)](https://packagist.org/packages/timbrix/sdk-php)
+[![PHP](https://img.shields.io/packagist/dependency-v/timbrix/sdk-php/php)](https://packagist.org/packages/timbrix/sdk-php)
+[![Licencia](https://img.shields.io/packagist/l/timbrix/sdk-php)](LICENSE)
+[![CFDI 4.0 México](https://img.shields.io/badge/CFDI-4.0%20M%C3%A9xico-006847)](https://docs.timbrix.mx)
+
 Cliente oficial de PHP para la API de [Timbrix](https://timbrix.mx): facturación electrónica CFDI 4.0. Funciona con cualquier framework (Laravel, Symfony o PHP puro). Requiere PHP 8.1 o superior.
 
 ## Instalación
@@ -11,26 +16,19 @@ composer require timbrix/sdk-php
 ## Quickstart
 
 ```php
-use Timbrix\TimbrixClient;
-
-$timbrix = new TimbrixClient(getenv('TIMBRIX_API_KEY') ?: ''); // sk_test_... para sandbox
+$timbrix = new Timbrix\TimbrixClient(getenv('TIMBRIX_API_KEY') ?: '');
 
 $invoice = $timbrix->invoices->create([
-    'type' => 'I',
+    'type' => 'I', 'use' => 'G03', 'paymentForm' => '01', 'paymentMethod' => 'PUE',
     'date' => (new DateTimeImmutable('now', new DateTimeZone('America/Mexico_City')))->format('Y-m-d\TH:i:s'),
-    'paymentForm' => '01',
-    'paymentMethod' => 'PUE',
-    'use' => 'G03',
-    'customerId' => $customer->id,
-    'items' => [['productId' => $product->id, 'quantity' => 1]],
-    'idempotencyKey' => $order->uuid,
+    'customerId' => $customerId,
+    'items' => [['productId' => $productId, 'quantity' => 1]],
+    'idempotencyKey' => $orderId,
 ]);
-
-echo $invoice->uuid;
 file_put_contents('factura.pdf', $timbrix->invoices->getPdf($invoice->uuid));
 ```
 
-La API key `sk_test_...` timbra en sandbox (sin validez fiscal); `sk_live_...` timbra en producción. No expongas la key en código que corre en el navegador.
+Con una API key de sandbox el CFDI no tiene validez fiscal; con una de producción, sí. El entorno de cada key se ve en el panel, en la lista de API keys. No expongas la key en código que corre en el navegador.
 
 Pasa siempre una `idempotencyKey` estable (por ejemplo, el id de tu pedido) al timbrar: es lo que permite al SDK reintentar sin riesgo de duplicar un CFDI.
 
